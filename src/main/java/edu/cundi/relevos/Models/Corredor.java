@@ -2,6 +2,7 @@ package edu.cundi.relevos.Models;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -87,7 +88,9 @@ public class Corredor extends Thread {
             while (true) {
                 distanciaAlcanzada = recorrer(3);
                 if (distanciaAlcanzada >= 120) {
-                    System.out.println("El equipo Ganador es:" + equipo.getNombre());
+                    equipo.interrupt();
+                    System.out.println("\nEl equipo Ganador es:" + equipo.getNombre());
+                    JOptionPane.showMessageDialog(null, "Ganador: "+ equipo.getNombre());
                     System.exit(0);
                     break;
                 }
@@ -102,7 +105,11 @@ public class Corredor extends Thread {
             }
         }
     }
-
+/**
+ * 
+ * @param numeroDeCorredor Parametro que recibe el numero de jugador
+ * @return retorna 
+ */
     public int recorrer(int numeroDeCorredor) {
         try {
             Thread.sleep(500);
