@@ -109,71 +109,87 @@ public class Corredor extends Thread {
         } catch (InterruptedException ex) {
             Logger.getLogger(Corredor.class.getName()).log(Level.SEVERE, null, ex);
         }
+        int recorrido;
         equipo.setAleatorio(equipo.generaNumeroAleatorio());
 
         if (numeroDeCorredor == 1) {
-            equipo.setDistancia1(equipo.getDistancia1() + equipo.getAleatorio());
-            if (equipo.pintarConsola().contains("Estados Unidos")) {
-                equipo1 = equipo.pintarConsola();
-            } else if (equipo.pintarConsola().contains("Colombia")) {
-                equipo2 = equipo.pintarConsola();
-            } else if (equipo.pintarConsola().contains("Jamaica")) {
-                equipo3 = equipo.pintarConsola();
-            }
-            if (equipo1 != null) {
-                System.out.println(equipo1);
-            }
-            if (equipo3 != null) {
-                System.out.println(equipo3);
-            }
-            if (equipo2 != null) {
-                System.out.println(equipo2);
-            }
-            return equipo.getDistancia1();
+            recorrido = distanciaCorredor1();
+            return recorrido;
         }
 
         if (numeroDeCorredor == 2) {
-            equipo.setDistancia2(equipo.getDistancia2() + equipo.getAleatorio());
-            if (equipo.pintarConsola().contains("Estados Unidos")) {
-                equipo1 = equipo.pintarConsola();
-            } else if (equipo.pintarConsola().contains("Colombia")) {
-                equipo2 = equipo.pintarConsola();
-            } else if (equipo.pintarConsola().contains("Jamaica")) {
-                equipo3 = equipo.pintarConsola();
-            }
-            if (equipo1 != null) {
-                System.out.println(equipo1);
-            }
-            if (equipo3 != null) {
-                System.out.println(equipo3);
-            }
-            if (equipo2 != null) {
-                System.out.println(equipo2);
-            }
-            return equipo.getDistancia2();
+            recorrido = distanciaCorredor2();
+            return recorrido;
         }
 
         if (numeroDeCorredor == 3) {
-            equipo.setDistancia3(equipo.getDistancia3() + equipo.getAleatorio());
-            if (equipo.pintarConsola().contains("Estados Unidos")) {
-                equipo1 = equipo.pintarConsola();
-            } else if (equipo.pintarConsola().contains("Colombia")) {
-                equipo2 = equipo.pintarConsola();
-            } else if (equipo.pintarConsola().contains("Jamaica")) {
-                equipo3 = equipo.pintarConsola();
-            }
-            if (equipo1 != null) {
-                System.out.println(equipo1);
-            }
-            if (equipo3 != null) {
-                System.out.println(equipo3);
-            }
-            if (equipo2 != null) {
-                System.out.println(equipo2);
-            }
-
-            return equipo.getDistancia3();
+            recorrido = distanciaCorredor3();
+            return recorrido;
         }
         return 0;
+    }
+
+    private int distanciaCorredor1() {
+        equipo.setDistancia1(equipo.getDistancia1() + equipo.getAleatorio());
+        if (equipo.pintarConsola().contains("Estados Unidos")) {
+            equipo1 = equipo.pintarConsola();
+        } else if (equipo.pintarConsola().contains("Colombia")) {
+            equipo2 = equipo.pintarConsola();
+        } else if (equipo.pintarConsola().contains("Jamaica")) {
+            equipo3 = equipo.pintarConsola();
+        }
+        if (equipo1 != null) {
+            System.out.println(equipo1);
+        }
+        if (equipo3 != null) {
+            System.out.println(equipo3);
+        }
+        if (equipo2 != null) {
+            System.out.println(equipo2);
+        }
+        return equipo.getDistancia1();
+    }
+
+    private int distanciaCorredor2() {
+        equipo.setDistancia2(equipo.getDistancia2() + equipo.getAleatorio());
+        if (equipo.pintarConsola().contains("Estados Unidos")) {
+            equipo1 = equipo.pintarConsola();
+        } else if (equipo.pintarConsola().contains("Colombia")) {
+            equipo2 = equipo.pintarConsola();
+        } else if (equipo.pintarConsola().contains("Jamaica")) {
+            equipo3 = equipo.pintarConsola();
+        }
+        if (equipo1 != null) {
+            System.out.println(equipo1);
+        }
+        if (equipo3 != null) {
+            System.out.println(equipo3);
+        }
+        if (equipo2 != null) {
+            System.out.println(equipo2);
+        }
+        return equipo.getDistancia2();
+    }
+
+    private int distanciaCorredor3() {
+        equipo.setDistancia3(equipo.getDistancia3() + equipo.getAleatorio());
+        if (equipo.pintarConsola().contains("Estados Unidos")) {
+            equipo1 = equipo.pintarConsola();
+        } else if (equipo.pintarConsola().contains("Colombia")) {
+            equipo2 = equipo.pintarConsola();
+        } else if (equipo.pintarConsola().contains("Jamaica")) {
+            equipo3 = equipo.pintarConsola();
+        }
+        if (equipo1 != null) {
+            System.out.println(equipo1);
+        }
+        if (equipo3 != null) {
+            System.out.println(equipo3);
+        }
+        if (equipo2 != null) {
+            System.out.println(equipo2);
+        }
+
+        return equipo.getDistancia3();
     }
 }
