@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"edu.cundi.relevos.Controllers","l":"Carrera"},{"p":"edu.cundi.relevos.Models","l":"Corredor"},{"p":"edu.cundi.relevos.Controllers","l":"Main"},{"p":"edu.cundi.relevos.Models","l":"Relevo"}]

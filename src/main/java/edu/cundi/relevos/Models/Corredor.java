@@ -2,8 +2,6 @@ package edu.cundi.relevos.Models;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author diego parra
@@ -89,6 +87,7 @@ public class Corredor extends Thread {
                 distanciaAlcanzada = recorrer(3);
                 if (distanciaAlcanzada >= 120) {
                     System.out.println("\nEl equipo Ganador es:" + equipo.getNombre());
+                    equipo.stop();
                     System.exit(0);
                     break;
                 }
