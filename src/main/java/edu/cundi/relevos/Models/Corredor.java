@@ -15,7 +15,7 @@ public class Corredor extends Thread {
      */
     Relevo equipo;
     private int distancia;
-    private int metaAlcanzada;
+    private int meta;
     private int distanciaAlcanzada;
     private String equipo1;
     private String equipo2;
@@ -23,14 +23,14 @@ public class Corredor extends Thread {
 
     /**
      *
-     * @param equipo
-     * @param distancia
-     * @param metaAlcanzada
+     * @param equipo parametro como objeto de la clase relevo
+     * @param distancia parametro con cual inicia los corredores.
+     * @param meta parametro con el cual termina los corredores.
      */
-    public Corredor(Relevo equipo, int distancia, int metaAlcanzada) {
+    public Corredor(Relevo equipo, int distancia, int meta) {
         this.equipo = equipo;
         this.distancia = distancia;
-        this.metaAlcanzada = metaAlcanzada;
+        this.meta = meta;
     }
 
     /**
@@ -88,9 +88,8 @@ public class Corredor extends Thread {
             while (true) {
                 distanciaAlcanzada = recorrer(3);
                 if (distanciaAlcanzada >= 120) {
-                    equipo.interrupt();
                     System.out.println("\nEl equipo Ganador es:" + equipo.getNombre());
-                    JOptionPane.showMessageDialog(null, "Ganador: "+ equipo.getNombre());
+                    JOptionPane.showMessageDialog(null, "Ganador: " + equipo.getNombre());
                     System.exit(0);
                     break;
                 }
@@ -105,11 +104,12 @@ public class Corredor extends Thread {
             }
         }
     }
-/**
- * 
- * @param numeroDeCorredor Parametro que recibe el numero de jugador
- * @return retorna 
- */
+
+    /**
+     *
+     * @param numeroDeCorredor Parametro que recibe el numero de jugador
+     * @return retorna el recorrido de los corredores.
+     */
     public int recorrer(int numeroDeCorredor) {
         try {
             Thread.sleep(500);
@@ -136,6 +136,10 @@ public class Corredor extends Thread {
         return 0;
     }
 
+    /**
+     *
+     * @return retorna las distancia de los corredores que estan de primeras.
+     */
     private int distanciaCorredor1() {
         equipo.setDistancia1(equipo.getDistancia1() + equipo.getAleatorio());
         if (equipo.pintarConsola().contains("Estados Unidos")) {
@@ -157,6 +161,10 @@ public class Corredor extends Thread {
         return equipo.getDistancia1();
     }
 
+    /**
+     *
+     * @return retorna las distancia de los corredores que estan de segundas.
+     */
     private int distanciaCorredor2() {
         equipo.setDistancia2(equipo.getDistancia2() + equipo.getAleatorio());
         if (equipo.pintarConsola().contains("Estados Unidos")) {
@@ -178,6 +186,10 @@ public class Corredor extends Thread {
         return equipo.getDistancia2();
     }
 
+    /**
+     *
+     * @return retorna las distancia de los corredores que estan de terceras.
+     */
     private int distanciaCorredor3() {
         equipo.setDistancia3(equipo.getDistancia3() + equipo.getAleatorio());
         if (equipo.pintarConsola().contains("Estados Unidos")) {
