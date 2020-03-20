@@ -89,7 +89,6 @@ public class Corredor extends Thread {
                 distanciaAlcanzada = recorrer(3);
                 if (distanciaAlcanzada >= 120) {
                     System.out.println("\nEl equipo Ganador es:" + equipo.getNombre());
-                    JOptionPane.showMessageDialog(null, "Ganador: " + equipo.getNombre());
                     System.exit(0);
                     break;
                 }
