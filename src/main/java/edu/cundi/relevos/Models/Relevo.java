@@ -1,11 +1,18 @@
 package edu.cundi.relevos.Models;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 /**
  *
  * @author diego parra
  */
-public abstract class Relevo {
+public class Relevo extends Thread {
 
+    private static final String colorCorredor1 = "\u001B[31m";
+    private static final String colorCorredor2 = "\u001B[33m";
+    private static final String colorCorredor3 = "\u001B[37m";
+    private String nombre;
+    private String recorrido;
     /**
      *
      */
@@ -13,11 +20,16 @@ public abstract class Relevo {
     /**
      *
      */
-    private int distancia;
+    private int distancia1;
     /**
      *
      */
-    private String color;
+    private int distancia2;
+
+    /**
+     *
+     */
+    private int distancia3;
     /**
      *
      */
@@ -25,32 +37,24 @@ public abstract class Relevo {
     /**
      *
      */
-    private int metaAlcanzada;
+    private int inicio;
 
     /**
      *
      */
     /**
      *
+     * @param nombre
+     * @param inicio
+     * @param meta
      */
-    public Relevo() {
-        this.meta = 300;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public String getColor() {
-        return color;
-    }
-
-    /**
-     *
-     * @param color
-     */
-    public void setColor(String color) {
-        this.color = color;
+    public Relevo(String nombre, int inicio, int meta) {
+        this.nombre = nombre;
+        this.inicio = inicio;
+        this.meta = meta;
+        this.distancia1 = 0;
+        this.distancia2 = 40;
+        this.distancia3 = 80;
     }
 
     /**
@@ -59,22 +63,6 @@ public abstract class Relevo {
      */
     public int getMeta() {
         return meta;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int getDistancia() {
-        return distancia;
-    }
-
-    /**
-     *
-     * @param distancia
-     */
-    public void setDistancia(int distancia) {
-        this.distancia = distancia;
     }
 
     /**
@@ -93,34 +81,83 @@ public abstract class Relevo {
         this.aleatorio = aleatorio;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getRecorrido() {
+        return recorrido;
+    }
+
+    public void setRecorrido(String recorrido) {
+        this.recorrido = recorrido;
+    }
+
+    public int getDistancia1() {
+        return distancia1;
+    }
+
+    public void setDistancia1(int distancia1) {
+        this.distancia1 = distancia1;
+    }
+
+    public int getDistancia2() {
+        return distancia2;
+    }
+
+    public void setDistancia2(int distancia2) {
+        this.distancia2 = distancia2;
+    }
+
+    public int getDistancia3() {
+        return distancia3;
+    }
+
+    public void setDistancia3(int distancia3) {
+        this.distancia3 = distancia3;
+    }
+
+    public int getInicio() {
+        return inicio;
+    }
+
+    public void setInicio(int inicio) {
+        this.inicio = inicio;
+    }
+
+    public synchronized String pintarConsola() {
+        recorrido = "\033[36m " + nombre + " ";
+        for (int i = inicio; i <= getMeta(); i++) {
+            if (i == getDistancia1()) {
+                recorrido += colorCorredor1 + " A ";
+            } else if (i == getDistancia2()) {
+                recorrido += colorCorredor2 + " B ";
+            } else if (i == getDistancia3()) {
+                recorrido += colorCorredor3 + " C ";
+            } else {
+                recorrido += "+";
+            }
+        }
+        return recorrido;
+    }
+
     /**
      *
      * @return
      */
-    public int getMetaAlcanzada() {
-        return metaAlcanzada;
+    public int generaNumeroAleatorio() {
+        int num = ThreadLocalRandom.current().nextInt(0, 50 + 1);
+        if (num >= 0 && num <= 15) {
+            num = 4;
+        } else if (num >= 15 && num <= 30) {
+            num = 8;
+        } else {
+            num = 12;
+        }
+        return num;
     }
-
-    /**
-     *
-     * @param metaAlcanzada
-     */
-    public void setMetaAlcanzada(int metaAlcanzada) {
-        this.metaAlcanzada = metaAlcanzada;
-    }
-
-    /**
-     *
-     */
-    public abstract void agregarCorredores();
-
-    /**
-     *
-     */
-    public abstract void corriendo();
-
-    /**
-     * 
-     */
-    public abstract void comenzarCarrera();
 }
